@@ -87,6 +87,10 @@ extension NewsViewController: UITableViewDelegate {
         router.route(to: .newsDetail(model: model), from: self)
     }
 
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 300
+    }
+
 }
 
 // MARK: - NewsTableViewCellDelegate

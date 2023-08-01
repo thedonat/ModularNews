@@ -61,10 +61,10 @@ extension DefaultNewsViewModel {
 
     func getCellModel(at index: Int) -> NewsTableViewCellModel {
         let article = articles[index]
-        let model = NewsTableViewCellModel(title: article.name,
-                                           description: article.artistName,
-                                           id: article.id,
-                                           artworkUrl: article.artworkUrl100)
+        let model = NewsTableViewCellModel(title: article.title,
+                                           description: article.description ?? "",
+                                           id: article.source.id ?? "",
+                                           artworkUrl: article.urlToImage ?? "")
         return model
     }
 
@@ -82,7 +82,7 @@ extension DefaultNewsViewModel {
         apiModule.getNews { [weak self] response in
             switch response {
             case .success(let news):
-                self?.articles = news.feed.results
+                self?.articles = news.articles
                 self?.emit(change: .newsFetched)
             case .failure(let failure):
                 print(failure)

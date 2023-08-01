@@ -38,17 +38,19 @@ class NewsTableViewCell: UITableViewCell {
 
         if let url = URL(string: model.artworkUrl) {
             imageLoader.loadImage(imageView: newsImage, with: url)
+        } else {
+            newsImage.image = UIImage(systemName: "newspaper")
         }
         configureFavButton()
     }
 
     private func configureUI() {
         titleLabel.textColor = .darkText
-        titleLabel.font = .systemFont(ofSize: 22, weight: .semibold)
+        titleLabel.font = .systemFont(ofSize: 18, weight: .semibold)
         descriptionLabel.textColor = .darkGray
-        descriptionLabel.font = .systemFont(ofSize: 17, weight: .light)
-        titleLabel.numberOfLines = 0
-        descriptionLabel.numberOfLines = 0
+        descriptionLabel.font = .systemFont(ofSize: 16, weight: .light)
+        titleLabel.numberOfLines = 2
+        descriptionLabel.numberOfLines = 2
     }
 
     private func configureFavButton() {

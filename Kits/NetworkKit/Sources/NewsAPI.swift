@@ -17,7 +17,7 @@ extension NewsAPIEndpoint: TargetType {
     typealias Parameters = [String: Any]
 
     var baseURL: URL {
-        guard let url = URL(string: "https://rss.applemarketingtools.com/api/v2/") else {
+        guard let url = URL(string: "https://newsapi.org/v2/") else {
             fatalError("What are you doing bro?")
         }
         return url
@@ -26,7 +26,7 @@ extension NewsAPIEndpoint: TargetType {
     var path: String {
         switch self {
         case .getNews:
-            return "us/music/most-played/25/albums.json"
+            return "top-headlines"
         }
     }
 
@@ -40,12 +40,19 @@ extension NewsAPIEndpoint: TargetType {
     var task: Task {
         switch self {
         case .getNews:
-            return .requestPlain
+            // Your API_KEY needs to be added
+            let params = ["country": "us", "apiKey": "fa68fee749e04314a452180019ed7fae"]
+            return .requestParameters(
+                parameters: params,
+                encoding: URLEncoding.queryString)
         }
     }
 
     var headers: HTTPHeader? {
-        nil
+        switch self {
+        case .getNews:
+            return ["Content-Type" : "application/json"]
+        }
     }
 }
 

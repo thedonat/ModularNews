@@ -37,8 +37,8 @@ public final class NewsRouter: NewsRouterProtocol, NewsModuleInterface {
         case .newsDetail(let model):
             @Dependency var newsDetailModule: NewsDetailModuleInterface
             let vc = newsDetailModule.createModule(using: context.navigationController,
-                                                   model: NewsDetailModel(title: model.name,
-                                                                          description: model.artistName))
+                                                   model: NewsDetailModel(title: model.title,
+                                                                          description: model.description ?? ""))
             context.navigationController?.pushViewController(vc, animated: true)
         }
     }

@@ -17,6 +17,7 @@ final class DependencyContainer {
 
     func injectDependencies() {
         let dependencyEngine = DependencyEngine.shared
+
         dependencyEngine.register(value: NewsRouter(), for: NewsModuleInterface.self)
         dependencyEngine.register(value: NewsAPIClient(), for: NewsAPINetworkable.self)
         dependencyEngine.register(value: NewsDetailRouter(), for: NewsDetailModuleInterface.self)
