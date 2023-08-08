@@ -41,7 +41,7 @@ extension NewsAPIEndpoint: TargetType {
         switch self {
         case .getNews:
             // Your API_KEY needs to be added
-            let params = ["country": "us", "apiKey": "fa68fee749e04314a452180019ed7fae"]
+            let params = ["country": "us", "apiKey": ""]
             return .requestParameters(
                 parameters: params,
                 encoding: URLEncoding.queryString)
